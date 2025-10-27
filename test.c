@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:56:49 by fdeville          #+#    #+#             */
-/*   Updated: 2025/10/23 17:30:08 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/10/24 01:26:14 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(void)
 {
 	char	*s = "meow";
-	
-	ft_printf("test %%%% %d %c \"%s\" ( %p )\n", 19, 'V', s, &s);
+
+	ft_printf("test %%%% %d %c \"%s\"\n%d (10) => %X (16)\n",
+		19, 'V', s, 42, 42);
 	return (0);
 }
