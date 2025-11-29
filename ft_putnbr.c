@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 04:41:20 by fdeville          #+#    #+#             */
-/*   Updated: 2025/10/23 16:53:47 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:24:40 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ void	ft_putnbr(int n)
 		ft_putchar('-');
 		n = -n;
 	}
+	if (n / 10)
+		ft_putnbr(n / 10);
+	ft_putchar('0' + (n % 10));
+}
+
+void	ft_putnbr_unsigned(unsigned int n)
+{
 	if (n / 10)
 		ft_putnbr(n / 10);
 	ft_putchar('0' + (n % 10));

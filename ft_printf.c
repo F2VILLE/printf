@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:23:18 by fdeville          #+#    #+#             */
-/*   Updated: 2025/10/24 01:13:00 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:25:10 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_print_format(char c, va_list *args)
 	else if (c == 'p')
 		ft_putptr(va_arg(*args, void *));
 	else if (c == 'u')
-		return ;
+		return ft_putnbr_unsigned(va_arg(*args, unsigned int));
 	else if (c == 'x')
 		ft_putnbr_base(va_arg(*args, int), "0123456789abcdef");
 	else if (c == 'X')
