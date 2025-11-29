@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 17:19:03 by fdeville          #+#    #+#             */
-/*   Updated: 2025/10/23 17:26:56 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/29 22:19:00 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putptr(void *ptr)
+int	ft_putptr(void *ptr)
 {
 	unsigned long	address;
 	char			hex_digits[] = "0123456789abcdef";
@@ -24,8 +24,7 @@ void	ft_putptr(void *ptr)
 	i = 0;
 	if (!ptr)
 	{
-		write(1, "(nil)", 5);
-		return ;
+		return (write(1, "(nil)", 5));
 	}
 	buffer[i++] = '0';
 	buffer[i++] = 'x';
@@ -36,6 +35,5 @@ void	ft_putptr(void *ptr)
 		j -= 4;
 	}
 	buffer[i] = '\0';
-
-	write(1, buffer, i);
+	return (write(1, buffer, i));
 }

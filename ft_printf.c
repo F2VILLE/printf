@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:23:18 by fdeville          #+#    #+#             */
-/*   Updated: 2025/11/29 19:25:10 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/29 20:47:24 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,39 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-static void	ft_print_format(char c, va_list *args)
+static int	ft_print_format(char c, va_list *args)
 {
+	int	written;
+
+	written = 0;
 	if (c == '%')
-		ft_putchar('%');
+		written += ft_putchar('%');
 	else if (c == 'd' || c == 'i')
-		ft_putnbr(va_arg(*args, int));
+		written += ft_putnbr(va_arg(*args, int));
 	else if (c == 'c')
-		ft_putchar(va_arg(*args, int));
+		written += ft_putchar(va_arg(*args, int));
 	else if (c == 's')
-		ft_putstr(va_arg(*args, char *));
+		written += ft_putstr(va_arg(*args, char *));
 	else if (c == 'p')
-		ft_putptr(va_arg(*args, void *));
+		written += ft_putptr(va_arg(*args, void *));
 	else if (c == 'u')
-		return ft_putnbr_unsigned(va_arg(*args, unsigned int));
+		written += ft_putnbr_unsigned(va_arg(*args, unsigned int));
 	else if (c == 'x')
-		ft_putnbr_base(va_arg(*args, int), "0123456789abcdef");
+		written += ft_putnbr_base(va_arg(*args, int), "0123456789abcdef");
 	else if (c == 'X')
-		ft_putnbr_base(va_arg(*args, int), "0123456789ABCDEF");
+		written += ft_putnbr_base(va_arg(*args, int), "0123456789ABCDEF");
+	return (written);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		i;
+	int		written;
 
 	va_start(args, format);
 	i = 0;
+	written = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -48,13 +54,13 @@ int	ft_printf(const char *format, ...)
 			i++;
 			if (!format[i])
 				return (0);
-			ft_print_format(format[i], &args);
+			written += ft_print_format(format[i], &args);
 		}
 		else
 		{
-			ft_putchar(format[i]);
+			written += ft_putchar(format[i]);
 		}
 		i++;
 	}
-	return (0);
+	return (written);
 }

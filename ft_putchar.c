@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 04:49:22 by fdeville          #+#    #+#             */
-/*   Updated: 2025/10/14 19:50:20 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/29 20:41:04 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	char	ch;
 
 	ch = (char)c;
-	write(1, &ch, 1);
+	return (write(1, &ch, 1));
 }

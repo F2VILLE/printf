@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:47:53 by fdeville          #+#    #+#             */
-/*   Updated: 2025/10/23 17:22:02 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/29 22:18:31 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
-
-void	ft_putnbr_base(int nbr, char *base);
 
 static int	ft_strlen(char *str)
 {
@@ -62,36 +61,41 @@ static int	valid_base(char *base)
 	return (1);
 }
 
-static void	ft_spec_case(int nbr, char *base, int base_l)
+static int	ft_spec_case(int nbr, char *base, int base_l)
 {
-	write(1, "-", 1);
-	ft_putnbr_base(-(nbr / base_l), base);
-	write(1, &base[-(nbr % base_l)], 1);
+	int	written;
+
+	written = 0;
+	written += write(1, "-", 1);
+	written += ft_putnbr_base(-(nbr / base_l), base);
+	written += write(1, &base[-(nbr % base_l)], 1);
+	return (written);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(int nbr, char *base)
 {
 	int	base_l;
+	int	written;
 
+	written = 0;
 	if (!valid_base(base))
-		return ;
+		return (written);
 	base_l = ft_strlen(base);
 	if (base_l > 0)
 	{
 		if (nbr == -2147483648)
 		{
-			ft_spec_case(nbr, base, base_l);
-			return ;
+			written += ft_spec_case(nbr, base, base_l);
+			return (written);
 		}
 		if (nbr < 0)
 		{
-			write(1, "-", 1);
+			written += write(1, "-", 1);
 			nbr *= -1;
 		}
 		if (nbr > base_l - 1)
-		{
-			ft_putnbr_base(nbr / base_l, base);
-		}
-		write(1, &base[nbr % base_l], 1);
+			written += ft_putnbr_base(nbr / base_l, base);
+		written += write(1, &base[nbr % base_l], 1);
 	}
+	return (written);
 }
