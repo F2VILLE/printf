@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:23:18 by fdeville          #+#    #+#             */
-/*   Updated: 2025/11/29 20:47:24 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/30 02:27:13 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,26 @@ int	ft_printf(const char *format, ...)
 	}
 	return (written);
 }
+/*#include <limits.h>
+#include <stdio.h>
+#include "ft_printf.h"
+
+int	main(void)
+{
+	char	*s = "meow";
+	unsigned int u = ((unsigned int)INT_MAX) + 10;
+	int		written;
+	int		og;
+
+	written = ft_printf(
+	"test %%%% %d %c \"%s\"\n%d (10) => %X (16)\nUnsigned : %u\n%p\n",
+		19, 'V', s, 42, 42, u, &u);
+	og = printf(
+	"test %%%% %d %c \"%s\"\n%d (10) => %X (16)\nUnsigned : %u\n%p\n",
+		19, 'V', s, 42, 42, u, &u);
+	int a = ft_printf("%d | %d\n\n", written, og);
+	int b = printf("%d | %d\n\n", written, og);
+	ft_printf("a = %d\nb = %d\n\n", a, b);
+
+	return (0);
+}*/

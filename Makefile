@@ -12,9 +12,6 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CF) -c $< -o $@
 
-test: all
-	$(CC) $(CF) -o test ./test.c $(NAME)
-
 clean:
 	rm -f $(OBJS)
 

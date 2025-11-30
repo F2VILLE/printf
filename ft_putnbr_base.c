@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:47:53 by fdeville          #+#    #+#             */
-/*   Updated: 2025/11/29 22:18:31 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/11/30 02:09:59 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_strlen(char *str)
 {
 	int	len;
 
+	if (!str)
+		return (0);
 	len = 0;
 	while (str[len] != '\0')
 		len++;
@@ -28,6 +30,8 @@ static int	has_duplicates(char *str)
 	int	i;
 	int	j;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -65,6 +69,8 @@ static int	ft_spec_case(int nbr, char *base, int base_l)
 {
 	int	written;
 
+	if (!base)
+		return (0);
 	written = 0;
 	written += write(1, "-", 1);
 	written += ft_putnbr_base(-(nbr / base_l), base);
