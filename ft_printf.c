@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:23:18 by fdeville          #+#    #+#             */
-/*   Updated: 2025/12/19 18:04:45 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/12/19 19:06:00 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_printf(const char *format, ...)
 	}
 	return (written);
 }
-#include <limits.h>
+/*#include <limits.h>
 #include <stdio.h>
 #include "ft_printf.h"
 
@@ -86,4 +86,4 @@ int	main(void)
 	ft_printf("a = %d\nb = %d\n\n", a, b);
 
 	return (0);
-}
+}*/

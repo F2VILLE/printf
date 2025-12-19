@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:47:53 by fdeville          #+#    #+#             */
-/*   Updated: 2025/12/19 18:11:32 by fdeville         ###   ########.fr       */
+/*   Updated: 2025/12/19 19:05:51 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,29 +78,17 @@ static int	ft_spec_case(int nbr, char *base, int base_l)
 	return (written);
 }
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-	int	base_l;
-	int	written;
+	unsigned long	base_l;
+	int				written;
 
 	written = 0;
-	if (!valid_base(base))
-		return (written);
-	base_l = ft_strlen(base);
+	base_l = 16;
 	if (base_l > 0)
 	{
-		if (nbr == -2147483648)
-		{
-			written += ft_spec_case(nbr, base, base_l);
-			return (written);
-		}
-		if (nbr < 0)
-		{
-			written += write(1, "-", 1);
-			nbr *= -1;
-		}
 		if (nbr > base_l - 1)
-			written += ft_putnbr_base(nbr / base_l, base);
+			written += ft_putnbr_ptr(nbr / base_l, base);
 		written += write(1, &base[nbr % base_l], 1);
 	}
 	return (written);
